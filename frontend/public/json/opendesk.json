@@ -1,0 +1,35 @@
+{
+  "name": "openDesk",
+  "slug": "opendesk",
+  "categories": [
+    16
+  ],
+  "date_created": "2025-01-21",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 8443,
+  "documentation": "https://docs.opendesk.eu/",
+  "website": "https://opendesk.eu/",
+  "logo": "https://docs.opendesk.eu/_astro/openDesk-logo-rgb-white.NR9llLex.svg",
+  "config_path": "",
+  "description": "openDesk is a comprehensive open-source workspace management platform that enables organizations to efficiently manage and optimize their office spaces. It offers features such as desk booking, room scheduling, visitor management, and resource allocation, all accessible through an intuitive user interface. With openDesk, businesses can enhance collaboration, improve space utilization, and create a flexible and productive work environment tailored to their needs.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/opendesk.sh",
+      "resources": {
+        "cpu": 4,
+        "ram": 16384,
+        "hdd": 15,
+        "os": "debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": []
+}
