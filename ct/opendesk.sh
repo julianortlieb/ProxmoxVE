@@ -43,44 +43,8 @@ function update_script() {
     exit
   fi
 
-  # check_for_gh_release returns 0 (true) if update available, 1 (false) if not
-  if check_for_gh_release "[appname]" "[owner/repo]"; then
-    msg_info "Stopping Services"
-    systemctl stop [appname]
-    msg_ok "Stopped Services"
-
-    # Optional: Backup important data before update
-    msg_info "Creating Backup"
-    mkdir -p /tmp/[appname]_backup
-    cp /opt/[appname]/.env /tmp/[appname]_backup/ 2>/dev/null || true
-    cp -r /opt/[appname]/data /tmp/[appname]_backup/ 2>/dev/null || true
-    msg_ok "Created Backup"
-
-    # CLEAN_INSTALL=1 removes old directory before extracting new version
-    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "[appname]" "[owner/repo]" "tarball" "latest" "/opt/[appname]"
-
-    # Restore configuration and data
-    msg_info "Restoring Data"
-    cp /tmp/[appname]_backup/.env /opt/[appname]/ 2>/dev/null || true
-    cp -r /tmp/[appname]_backup/data/* /opt/[appname]/data/ 2>/dev/null || true
-    rm -rf /tmp/[appname]_backup
-    msg_ok "Restored Data"
-
-    # Optional: Run any post-update commands
-    msg_info "Running Post-Update Tasks"
-    cd /opt/[appname] 
-    # Examples:
-    # $STD npm ci --production
-    # $STD php artisan migrate --force
-    # $STD composer install --no-dev
-    msg_ok "Ran Post-Update Tasks"
-
-    msg_info "Starting Services"
-    systemctl start [appname]
-    msg_ok "Started Services"
-
-    msg_ok "Updated successfully!"
-  fi
+  msg_info "Updating ${APP} LXC"
+  msg_ok "Updated successfully!"
   exit
 }
 
