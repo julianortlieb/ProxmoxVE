@@ -15,6 +15,12 @@ network_check
 update_os
 
 # =============================================================================
+# VARIABLES
+# =============================================================================
+export DOMAIN="opendesk-pve.internal"
+echo "export DOMAIN=${DOMAIN}" >>/etc/profile.d/opendesk.sh
+
+# =============================================================================
 # DEPENDENCIES
 # =============================================================================
 # Only install what's actually needed - curl/sudo/mc are already in the base image
@@ -81,9 +87,9 @@ msg_info "Installing openDesk"
 WORKDIR="/opt/opendesk"
 mkdir -p $WORKDIR
 $STD git clone https://gitlab.opencode.de/bmi/opendesk/deployment/opendesk.git $WORKDIR
-cd $WORKDIR/ || exit
+cd $WORKDIR/helmfile || exit
 
-
+$STD helmfile apply -e default -n opendesk
 
 # =============================================================================
 # Finishing Up
