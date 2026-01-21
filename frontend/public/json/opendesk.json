@@ -13,7 +13,7 @@
   "website": "https://opendesk.eu/",
   "logo": "https://docs.opendesk.eu/_astro/openDesk-logo-rgb-white.NR9llLex.svg",
   "config_path": "",
-  "description": "openDesk is a comprehensive open-source workspace management platform that enables organizations to efficiently manage and optimize their office spaces. It offers features such as desk booking, room scheduling, visitor management, and resource allocation, all accessible through an intuitive user interface. With openDesk, businesses can enhance collaboration, improve space utilization, and create a flexible and productive work environment tailored to their needs.",
+  "description": "openDesk is a comprehensive open-source office and collaboration platform, that was developed for the european public sector. It combines a wide range of productivity and communication tools into a single, integrated solution, making it easier for organizations to manage their digital workspaces. With features like email, calendar, document management, video conferencing, and team collaboration tools, openDesk aims to enhance productivity and streamline workflows for businesses and institutions.",
   "install_methods": [
     {
       "type": "default",
