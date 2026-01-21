@@ -2,9 +2,9 @@
   "name": "openDesk",
   "slug": "opendesk",
   "categories": [
-    16
+    12
   ],
-  "date_created": "2025-01-21",
+  "date_created": "2026-01-21",
   "type": "ct",
   "updateable": true,
   "privileged": false,

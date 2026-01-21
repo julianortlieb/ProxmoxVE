@@ -10,7 +10,8 @@ import { basePath } from "@/config/site-config";
 import { getDisplayValueFromType } from "../script-info-blocks";
 
 function getInstallCommand(scriptPath = "", isAlpine = false, useGitea = false) {
-  const githubUrl = `https://raw.githubusercontent.com/community-scripts/${basePath}/main/${scriptPath}`;
+  // const githubUrl = `https://raw.githubusercontent.com/community-scripts/${basePath}/main/${scriptPath}`;
+  const githubUrl = `https://raw.githubusercontent.com/julianortlieb/${basePath}/refs/heads/feature/opendesk/${scriptPath}`;
   const giteaUrl = `https://git.community-scripts.org/community-scripts/${basePath}/raw/branch/main/${scriptPath}`;
   const url = useGitea ? giteaUrl : githubUrl;
   return isAlpine ? `bash -c "$(curl -fsSL ${url})"` : `bash -c "$(curl -fsSL ${url})"`;
@@ -25,53 +26,53 @@ export default function InstallCommand({ item }: { item: Script }) {
       <p className="text-sm mt-2">
         {isAlpine
           ? (
-              <>
-                As an alternative option, you can use Alpine Linux and the
-                {" "}
-                {item.name}
-                {" "}
-                package to create a
-                {" "}
-                {item.name}
-                {" "}
-                {getDisplayValueFromType(item.type)}
-                {" "}
-                container with faster creation time and minimal system resource usage.
-                You are also obliged to adhere to updates provided by the package maintainer.
-              </>
-            )
+            <>
+              As an alternative option, you can use Alpine Linux and the
+              {" "}
+              {item.name}
+              {" "}
+              package to create a
+              {" "}
+              {item.name}
+              {" "}
+              {getDisplayValueFromType(item.type)}
+              {" "}
+              container with faster creation time and minimal system resource usage.
+              You are also obliged to adhere to updates provided by the package maintainer.
+            </>
+          )
           : item.type === "pve"
             ? (
+              <>
+                To use the
+                {" "}
+                {item.name}
+                {" "}
+                script, run the command below **only** in the Proxmox VE Shell. This script is
+                intended for managing or enhancing the host system directly.
+              </>
+            )
+            : item.type === "addon"
+              ? (
                 <>
-                  To use the
+                  This script enhances an existing setup. You can use it inside a running LXC container or directly on the
+                  Proxmox VE host to extend functionality with
+                  {" "}
+                  {item.name}
+                  .
+                </>
+              )
+              : (
+                <>
+                  To create a new Proxmox VE
                   {" "}
                   {item.name}
                   {" "}
-                  script, run the command below **only** in the Proxmox VE Shell. This script is
-                  intended for managing or enhancing the host system directly.
+                  {getDisplayValueFromType(item.type)}
+                  , run the command below in the
+                  Proxmox VE Shell.
                 </>
-              )
-            : item.type === "addon"
-              ? (
-                  <>
-                    This script enhances an existing setup. You can use it inside a running LXC container or directly on the
-                    Proxmox VE host to extend functionality with
-                    {" "}
-                    {item.name}
-                    .
-                  </>
-                )
-              : (
-                  <>
-                    To create a new Proxmox VE
-                    {" "}
-                    {item.name}
-                    {" "}
-                    {getDisplayValueFromType(item.type)}
-                    , run the command below in the
-                    Proxmox VE Shell.
-                  </>
-                )}
+              )}
       </p>
       {isAlpine && (
         <p className="mt-2 text-sm">
