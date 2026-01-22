@@ -52,7 +52,7 @@ msg_info "Installing Helm, Helmfile, Helmdiff, Cert-Manager, Ingress-NGINX"
 $STD curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4 | bash
 # Helmfile
 HELMFILE_DOWNLOAD_URL=$(curl -s "https://api.github.com/repos/helmfile/helmfile/releases/latest" | jq -r '.assets[] | select(.name | test("linux_amd64\\.tar\\.gz$")) | .browser_download_url')
-$STD curl "HELMFILE_DOWNLOAD_URL" -o /tmp/helmfile_linux_amd64.tar.gz
+$STD curl $HELMFILE_DOWNLOAD_URL -o /tmp/helmfile_linux_amd64.tar.gz
 $STD tar -xzf /tmp/helmfile_linux_amd64.tar.gz -C /tmp
 mv /tmp/helmfile /usr/local/bin/helmfile
 chmod +x /usr/local/bin/helmfile
